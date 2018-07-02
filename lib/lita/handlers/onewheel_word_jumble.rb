@@ -8,7 +8,7 @@ module Lita
         Lita.logger.debug('Loading words...')
 
         words = {}
-        File.open('lib/words').each_line do |l|
+        File.open(File.expand_path('../../words', File.dirname(__FILE__))).each_line do |l|
           l.chomp!
           words[l.downcase] = 1
         end
