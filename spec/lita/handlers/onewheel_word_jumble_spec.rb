@@ -15,6 +15,20 @@ describe Lita::Handlers::OnewheelWordJumble, lita_handler: true do
     send_command 'words aelb'
     expect(replies.last).to_not be(nil)
     expect(replies.count).to be(1)
-    expect(replies.last).to include('able')
+    expect(replies.last).to eq('abe, abel, able, alb, albe, ale, bae, bal, bale, bea, beal, bel, bela, blae, elb, lab, lea')
+  end
+
+  it 'solves yer jumble' do
+    send_command 'words aelb 4'
+    expect(replies.last).to_not be(nil)
+    expect(replies.count).to be(1)
+    expect(replies.last).to eq('abel, able, albe, bale, beal, bela, blae')
+  end
+
+  it 'solves yer jumble' do
+    send_command 'words aelb 3'
+    expect(replies.last).to_not be(nil)
+    expect(replies.count).to be(1)
+    expect(replies.last).to eq('abe, alb, ale, bae, bal, bea, bel, elb, lab, lea')
   end
 end
