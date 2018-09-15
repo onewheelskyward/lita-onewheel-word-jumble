@@ -28,10 +28,10 @@ module Lita
 
         combos = []
 
-        for n in (min_len..len) do
+        (min_len..len).each do |n|
           Lita.logger.debug "Checking for #{n} length words..."
           letters.split(//).permutation(n).to_a.map(&:join).each do |combo|
-            combos.push combo  if words[combo] == 1
+            combos.push combo if words[combo] == 1
           end
         end
 
