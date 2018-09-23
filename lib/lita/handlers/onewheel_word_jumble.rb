@@ -30,12 +30,14 @@ module Lita
 
         (min_len..len).each do |n|
           Lita.logger.debug "Checking for #{n} length words..."
+          arr = []
           letters.split(//).permutation(n).to_a.map(&:join).each do |combo|
-            combos.push combo if words[combo] == 1
+            arr.push combo if words[combo] == 1
           end
+          combos.push arr.sort.uniq
         end
 
-        combo_str = combos.sort.uniq.join ", "
+        combo_str = combos.join ", "
 
         Lita.logger.info "Returning: #{combo_str}"
 
